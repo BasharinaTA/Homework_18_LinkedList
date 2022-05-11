@@ -3,48 +3,9 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
- /*
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(45);
 
-        List list = new List(node1);
-
-
-        node1.setNextNode(node2);
-        node2.setNextNode(node3);
-        node3.setNextNode(node4);
-
-        System.out.println(list.getLength());
-
-        System.out.println(node1.getValue());
-        System.out.println(node1.getNextNode().getValue());
-        System.out.println(node1.getNextNode().getNextNode().getValue());
-        System.out.println(node1.getNextNode().getNextNode().getNextNode().getValue());
-        System.out.println(node1.getNextNode().getNextNode().getNextNode().getNextNode());
-
-        list.printList();
-        list.push(7);
-        list.printList();
-
-        list.push(0, 0);
-        list.push(-1, 4);
-        list.push(-9, 7);
-        list.push(20, 47);
-        list.printList();
-
-        list.pop(8);
-        list.pop(120);
-        list.pop(5);
-        list.pop(0);
-        list.printList();
-
-        System.out.println(list.getLength());
-
- */
         int[] arr = new int[]{1, 3, 7};
-        List list = new List(new Node(arr[0]));
+        var list = new List<>(new Node<>(arr[0]));
         for (int i = 1; i < arr.length; i++) {
             list.push(arr[i]);
         }
@@ -84,7 +45,7 @@ public class Main {
 // Задание 5
 // Определить количество слов в списке, которые начинаются и заканчиваются на одну букву.
         String[] arrTask5 = new String[]{"Аптека", "парашют", "потоп", "в", "угУ"};
-        ListString list05 = new ListString(arrTask5);
+        var list05 = new List<>(arrTask5);
         list05.printList();
         Exercises.task05(list05);
 
@@ -92,8 +53,8 @@ public class Main {
 
 // Задание 6
 // Проверить, что каждое следующее слово в списке начинается с последней буквы предыдущего.
-        String[] arrTask6 = new String[]{"task", "Kate", "bar", "red", "dad"};
-        ListString list06 = new ListString(arrTask6);
+        String[] arrTask6 = new String[]{"task", "kate", "bar", "red", "dad"};
+        var list06 = new List<>(arrTask6);
         list06.printList();
         Exercises.tack06(list06);
 
@@ -101,8 +62,8 @@ public class Main {
 
 // Задание 7
 // Определить количество слов в списке, которые совпадают с первым (последним) словом списка.
-        String[] arrTask7 = new String[]{"tiger", "bird", "tiger", "bird", "bird", "tiger", "rabbit"};
-        ListString list07 = new ListString(arrTask7);
+        String[] arrTask7 = new String[]{"tiger", "bird", "Tiger", "bird", "bird", "tiger", "rabbit"};
+        var list07 = new List<>(arrTask7);
         list07.printList();
         Exercises.task07(list07);
 
@@ -110,8 +71,8 @@ public class Main {
 
 // Задание 8
 // Проверить, упорядочены ли элементы списка по алфавиту.
-        String[] arrTask8 = new String[]{"aa", "Aa", "ab", "BA", "b"};
-        ListString list08 = new ListString(arrTask8);
+        String[] arrTask8 = new String[]{"aa", "aa", "ab", "b", "ba"};
+        var list08 = new List<>(arrTask8);
         list08.printList();
         Exercises.task08(list08);
 
@@ -121,8 +82,8 @@ public class Main {
 // Определить, входит ли список L1 в L2.
         String[] arr1 = new String[] {"test", "task"};
         String[] arr2 = new String[] {"task", "test", "dog",  "test", "task", "book"};
-        ListString l1 = new ListString(arr1);
-        ListString l2 = new ListString(arr2);
+        var l1 = new List<>(arr1);
+        var l2 = new List<>(arr2);
         l1.printList();
         l2.printList();
         Exercises.task09(l1, l2);
@@ -131,8 +92,8 @@ public class Main {
 
 // Задание 10
 // Перевернуть список наоборот.
-        String[] arrTas10 = new String[]{"aa", "bb", "cc", "dd"};
-        ListString list10 = new ListString(arrTas10);
+        String[] arrTas10 = new String[]{"ab", "bb", "cc", "dd"};
+        var list10 = new List<>(arrTas10);
         list10.printList();
         Exercises.task10(list10);
         list10.printList();

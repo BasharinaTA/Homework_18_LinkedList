@@ -1,38 +1,37 @@
 package com.company;
 
-public class Node {
-    private int value;
-    private Node nextNode;
+public class Node<T>  {
+    private T value;
+    private Node<T> nextNode;
 
-    public int getValue() {
+    public T getValue() {
         return this.value;
     }
 
-    public void setValue(int value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public Node getNextNode() {
+    public Node<T> getNextNode() {
         return this.nextNode;
     }
 
-    public void setNextNode(Node nextNode) {
+    public void setNextNode(Node<T> nextNode) {
         this.nextNode = nextNode;
     }
 
     public Node() {
-        this.value = 0;
+        this.value = null;
         this.nextNode = null;
     }
 
-    public Node(int value) {
+    public Node(T value) {
         this.value = value;
         this.nextNode = null;
     }
 
-    public Node(int value, Node nextNode) {
+    public Node(T value, Node<T> nextNode) {
         this.value = value;
         this.nextNode = nextNode;
     }
-
 }

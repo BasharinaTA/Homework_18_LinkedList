@@ -2,8 +2,8 @@ package com.company;
 
 public class Exercises {
 // Метод нахождения среднеарифметического значения элементов списка
-    public static double task01(List list) {
-        Node tmpNode = list.getHead();
+    public static double task01(List<Integer> list) {
+        var tmpNode = list.getHead();
         int sum = 0;
         while (tmpNode != null) {
             sum += tmpNode.getValue();
@@ -13,13 +13,13 @@ public class Exercises {
     }
 
 // Метод переноса в начало списка его последнего элемента
-    public static void task02(List list) {
+    public static <T> void task02(List<T> list) {
         if (list.getLength() > 1) {
-            Node tmpNode = list.getHead();
+            var tmpNode = list.getHead();
             while (tmpNode.getNextNode().getNextNode() != null) {
                 tmpNode = tmpNode.getNextNode();
             }
-            Node lastNode = tmpNode.getNextNode();
+            var lastNode = tmpNode.getNextNode();
             tmpNode.setNextNode(null);
             lastNode.setNextNode(list.getHead());
             list.setHead(lastNode);
@@ -27,11 +27,11 @@ public class Exercises {
     }
 
 // Метод переноса в конец списка его первого элемента
-    public static void task03(List list) {
+    public static <T> void task03(List<T> list) {
         if (list.getLength() > 1) {
-            Node firstNode = list.getHead();
+            var firstNode = list.getHead();
             list.setHead(firstNode.getNextNode());
-            Node tmpNode = list.getHead();
+            var tmpNode = list.getHead();
             while (tmpNode.getNextNode() != null) {
                 tmpNode = tmpNode.getNextNode();
             }
@@ -42,30 +42,30 @@ public class Exercises {
 
 // Метод обмена местами первого и последнего элементов списка
 //Вариант 1: меняет местами значения у первого и последнего элемента списка
-    public static void task04_1(List list) {
-        Node tmpNode = list.getHead();
-        int firstValue = tmpNode.getValue();
+    public static <T> void task04_1(List<T> list) {
+        var tmpNode = list.getHead();
+        T firstValue = tmpNode.getValue();
        while (tmpNode.getNextNode() != null) {
             tmpNode = tmpNode.getNextNode();
        }
-       int lastValue = tmpNode.getValue();
+       T lastValue = tmpNode.getValue();
        tmpNode.setValue(firstValue);
        list.getHead().setValue(lastValue);
     }
 
 //Вариант 2: меняем местами первый и последний элемент
-    public static void task04_2(List list) {
+    public static <T> void task04_2(List<T> list) {
         if (list.getLength() == 2) {
-            Node secondNode = list.getHead().getNextNode();
+            var secondNode = list.getHead().getNextNode();
             secondNode.setNextNode(list.getHead());
             list.getHead().setNextNode(null);
             list.setHead(secondNode);
         } else if (list.getLength() > 2) {
-            Node tmpNode = list.getHead();
+            var tmpNode = list.getHead();
             while (tmpNode.getNextNode().getNextNode() != null) {
                 tmpNode = tmpNode.getNextNode();
             }
-            Node lastNode = tmpNode.getNextNode();
+            var lastNode = tmpNode.getNextNode();
             lastNode.setNextNode(list.getHead().getNextNode());
             tmpNode.setNextNode(list.getHead());
             list.getHead().setNextNode(null);
@@ -74,9 +74,9 @@ public class Exercises {
     }
 
 // Метод определения количества слов, которые начинаются и заканчиваются на одну букву
-    public static void task05(ListString list) {
+    public static void task05(List<String> list) {
         int count = 0;
-        NodeString tmpNode = list.getHead();
+       var tmpNode = list.getHead();
         while (tmpNode != null) {
             if (isMatch(tmpNode.getValue())) {
                 count++;
@@ -87,12 +87,12 @@ public class Exercises {
     }
 
     private static boolean isMatch(String str) {
-        return str.toLowerCase().charAt(0) == str.toLowerCase().charAt(str.length() - 1);
+        return str.charAt(0) == str.charAt(str.length() - 1);
     }
 
 // Метод проверки, что каждое следующее слово в списке начинается с последней буквы предыдущего
-    public static void tack06(ListString list) {
-        NodeString tmpNode = list.getHead();
+    public static void tack06(List<String> list) {
+        var tmpNode = list.getHead();
         boolean isCheck = false;
         while (tmpNode.getNextNode()!= null) {
             if (isNext(tmpNode.getValue(), tmpNode.getNextNode().getValue())) {
@@ -111,16 +111,16 @@ public class Exercises {
         }
     }
 
-    static boolean isNext(String previous, String next) {
-        return previous.toLowerCase().charAt(previous.length() - 1) == next.toLowerCase().charAt(0);
+    private static boolean isNext(String previous, String next) {
+        return previous.charAt(previous.length() - 1) == next.charAt(0);
     }
 
 // Метод определения количества слов в списке, которые совпадают с первым (последним) словом списка
-    public static void task07(ListString list) {
+    public static void task07(List<String> list) {
         int count = 0;
-        NodeString tmpNode = list.getHead().getNextNode();
+        var tmpNode = list.getHead().getNextNode();
         while (tmpNode != null) {
-            if (list.getHead().getValue().equalsIgnoreCase(tmpNode.getValue())) {
+            if (list.getHead().getValue().equals(tmpNode.getValue())) {
                 count++;
             }
             tmpNode = tmpNode.getNextNode();
@@ -131,7 +131,7 @@ public class Exercises {
         while (tmpNode.getNextNode() != null) {
             tmpNode = tmpNode.getNextNode();
         }
-        NodeString lastNode = tmpNode;
+        var lastNode = tmpNode;
         tmpNode = list.getHead();
         while (tmpNode != null && tmpNode != lastNode) {
             if (tmpNode.getValue().equalsIgnoreCase(lastNode.getValue())) {
@@ -143,7 +143,7 @@ public class Exercises {
     }
 
 // Метод проверки упорядоченности элементов списка по алфавиту
-    public static void task08(ListString list) {
+    public static void task08(List<String> list) {
         if (isListOrdered(list)) {
             System.out.println("Элементы в списке упорядочены по алфавиту");
         } else {
@@ -151,8 +151,8 @@ public class Exercises {
         }
     }
 
-    private static boolean isListOrdered(ListString list) {
-        NodeString tmpNode = list.getHead();
+    private static boolean isListOrdered(List<String> list) {
+        var tmpNode = list.getHead();
         while (tmpNode.getNextNode() != null) {
             if (!isStringsOrdered(tmpNode.getValue(), tmpNode.getNextNode().getValue())) {
                 return false;
@@ -163,11 +163,11 @@ public class Exercises {
     }
 
     private static boolean isStringsOrdered(String firstStr, String secondStr) {
-        return firstStr.compareToIgnoreCase(secondStr) <= 0;
+        return firstStr.compareTo(secondStr) <= 0;
     }
 
 // Метод определения вхождения списка L1 в L2
-    public static void task09(ListString l1, ListString l2) {
+    public static <T> void task09(List<T> l1, List<T> l2) {
         if (isListIncluded(l1, l2)) {
             System.out.println("Список L1 входит в L2");
         } else {
@@ -175,12 +175,12 @@ public class Exercises {
         }
     }
 
-    private static boolean isListIncluded(ListString l1, ListString L2) {
-        NodeString tmpNodeL2 = L2.getHead();
+    private static <T> boolean isListIncluded(List<T> l1, List<T> L2) {
+        var tmpNodeL2 = L2.getHead();
         while (tmpNodeL2 != null) {
-            NodeString tmpNodeL1 = l1.getHead();
-            NodeString tmpNode = tmpNodeL2;
-            while (tmpNodeL1 != null && tmpNode != null && tmpNodeL1.getValue().equalsIgnoreCase(tmpNode.getValue())) {
+            var tmpNodeL1 = l1.getHead();
+            var tmpNode = tmpNodeL2;
+            while (tmpNodeL1 != null && tmpNode != null && tmpNodeL1.getValue().equals(tmpNode.getValue())) {
                 tmpNodeL1 = tmpNodeL1.getNextNode();
                 tmpNode = tmpNode.getNextNode();
             }
@@ -193,36 +193,15 @@ public class Exercises {
     }
 
 // Метод, переворачивающий список наоборот
-    public static void task10(ListString list) {
-        NodeString currentNode = list.getHead();
-        NodeString previousNode = null;
+    public static <T> void task10(List<T> list) {
+        var currentNode = list.getHead();
+        Node<T> previousNode = null;
         while (currentNode != null) {
-            NodeString nextNode = currentNode.getNextNode();
+            var nextNode = currentNode.getNextNode();
             currentNode.setNextNode(previousNode);
             previousNode = currentNode;
             currentNode = nextNode;
         }
         list.setHead(previousNode);
-/*
-  // Вариант 2.
-        if (list.getLength() > 1) {
-            NodeString currentNode = list.getHead();
-            while (currentNode.getNextNode().getNextNode() != null) {
-                currentNode = currentNode.getNextNode();
-            }
-            NodeString penultimate = currentNode;
-            NodeString firstNode = currentNode.getNextNode();
-            while (list.getHead() != penultimate.getNextNode()) {
-                penultimate.getNextNode().setNextNode(penultimate);
-                currentNode = list.getHead();
-                while (currentNode.getNextNode() != penultimate) {
-                    currentNode = currentNode.getNextNode();
-                }
-                penultimate = currentNode;
-            }
-            list.getHead().setNextNode(null);
-            list.setHead(firstNode);
-        }
- */
     }
 }
